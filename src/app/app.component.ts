@@ -8,16 +8,31 @@ import { AgGridAngular } from 'ag-grid-angular';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent implements OnInit {
+    // private rowDataUrl = 'https://api.myjson.com/bins/ly7d1';
     private rowDataUrl = 'https://api.myjson.com/bins/15psn9';
     @ViewChild('agGrid') agGrid: AgGridAngular;
     title = 'app';
 
+    // columnDefs = [
+    //     { headerName: 'Make', field: 'make', 
+    //       sortable: true, filter: true, checkboxSelection: true, rowGroup: true },
+    //     { headerName: 'Model', field: 'model', sortable: true, filter: true },
+    //     { headerName: 'Price', field: 'price', sortable: true, filter: true }
+    // ];
+
     columnDefs = [
-        { headerName: 'Make', field: 'make', 
-          sortable: true, filter: true, checkboxSelection: true },
-        { headerName: 'Model', field: 'model', sortable: true, filter: true },
-        { headerName: 'Price', field: 'price', sortable: true, filter: true }
+        {headerName: 'Make', field: 'make', rowGroup: true },
+        {headerName: 'Price', field: 'price'}
     ];
+
+    autoGroupColumnDef = {
+      headerName: 'Model',
+      field: 'model',
+      cellRenderer: 'agGroupCellRenderer',
+      cellRendererParams: {
+        checkbox: true
+      }
+    };
 
     rowData: any;
 
