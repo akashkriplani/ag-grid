@@ -2,10 +2,12 @@
 <p>
   Start editing to see some magic happen :)
 </p>
-<ag-grid-angular 
-    style="width: 500px; height: 500px;" 
-    class="ag-theme-balham"
-    [rowData]="rowData" 
-    [columnDefs]="columnDefs"
-    >
+<button (click)="getSelectedRows()">Get Selected Rows</button>
+<ag-grid-angular
+  #agGrid
+  style="width: 500px; height: 500px;" 
+  class="ag-theme-balham"
+  [rowData]="rowData | async" 
+  [columnDefs]="columnDefs"
+  rowSelection="multiple">
 </ag-grid-angular>
